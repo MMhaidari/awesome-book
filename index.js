@@ -48,3 +48,16 @@ const booksList = () => {
 };
 
 booksList();
+
+function removeBook() {
+  let getBooks = JSON.parse(localStorage.getItem('books'));
+  const removeBtn = document.querySelectorAll('.removeBtn');
+  removeBtn.forEach((element) => {
+    element.addEventListener('click', (e) => {
+      const id = parseInt(e.target.id, 10);
+      getBooks = getBooks.filter((item) => item.id !== id);
+      localStorage.setItem('books', JSON.stringify(getBooks));
+      location.reload();
+    });
+  });
+}
