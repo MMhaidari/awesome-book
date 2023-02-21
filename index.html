@@ -8,17 +8,17 @@
     <title>Document</title>
 </head>
 <body>
-    <main>
-        <h1 class="primary-header">Awesome Books</h1>
-        <div class="new-book-container"></div>
-
+    <div class="container">
+        <h1 class="primary-header">All Awesome Books</h1>
+        <div class="book-container"></div>
+        
         <form action="#" class="book-form">
-            <input type="text" name="book-title" id="book-title" placeholder="Book Title" style="display: block; margin-bottom: 8px;">
-            <input type="text" name="book-author" id="book-author" placeholder="Book Author" style="display: block; margin-bottom: 8px;">
-            <input type="submit" name="add-book" id="add-book" value="Add New Book">
+           <h2 class="form-header">Add New Book</h2>
+           <input type="text" name="book-title" id="book-title" placeholder="Book Title" >
+           <input type="text" name="book-author" id="book-author" placeholder="Book Author">
+           <input class="add-book" type="submit" name="add-book" id="add-book" value="Add">
         </form>
-
-    </main>
+     </div>
     <script defer src="index.js"></script>
 </body>
 </html>

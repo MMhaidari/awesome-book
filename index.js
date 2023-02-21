@@ -1,63 +1,83 @@
-/* eslint-disable no-restricted-globals */
 /* eslint-disable no-use-before-define */
-function Books(id, title, author) {
-  this.id = id;
-  this.title = title;
-  this.author = author;
+class Books {
+  constructor() {
+    this.bookList = [];
+  }
+
+  addBook(book) {
+    this.bookList = Books.fetchBooks();
+    this.bookList.push(book);
+    Books.updateBooks(this.bookList);
+  }
+
+  remove(e) {
+    const id = parseInt(e.target.id, 10);
+    this.bookList = Books.fetchBooks();
+    this.bookList = this.bookList.filter((item) => item.id !== id);
+    e.target.parentElement.remove();
+    Books.updateBooks(this.bookList);
+  }
 }
 
-const bookList = [];
-const bookContainer = document.querySelector('.new-book-container');
 const addbookBtn = document.getElementById('add-book');
-const getBooks = JSON.parse(localStorage.getItem('books'));
-
-let id = 0;
 
 addbookBtn.addEventListener('click', (e) => {
   e.preventDefault();
   const bookTitle = document.querySelector('#book-title').value;
   const bookAuthor = document.querySelector('#book-author').value;
-  const book = new Books(id += 1, bookTitle, bookAuthor);
-  bookList.push(book);
-  localStorage.setItem('books', JSON.stringify(bookList));
-  createNewBook(book);
+  Books.bookList = Books.fetchBooks() ? Books.fetchBooks() : [];
+  let id = 0;
+  if (Books.bookList && Books.bookList.length > 0) {
+    id = Books.bookList[Books.bookList.length - 1].id + 1;
+  }
+
+  if (bookTitle && bookAuthor) {
+    const book = { id: id += 1, title: bookTitle, author: bookAuthor };
+    const bookObject = new Books();
+    bookObject.addBook(book);
+    createNewBook(book);
+    clearValue();
+  }
 });
 
-function createNewBook(item) {
-  const newbookContainer = document.createElement('div');
-  newbookContainer.setAttribute('id', item.id);
-  const bookTitle = document.createElement('p');
-  bookTitle.innerText = item.title;
-  const bookAuthor = document.createElement('p');
-  bookAuthor.innerText = item.author;
+const clearValue = () => {
+  const bookTitle = document.querySelector('#book-title');
+  const bookAuthor = document.querySelector('#book-author');
+  bookTitle.value = '';
+  bookAuthor.value = '';
+};
+
+function createNewBook(book) {
+  const bookContainer = document.querySelector('.book-container');
+  const newBookContainer = document.createElement('div');
+  newBookContainer.setAttribute('class', 'new-book-container');
+  newBookContainer.setAttribute('id', book.id);
+  const bookDetails = document.createElement('div');
+  bookDetails.setAttribute('class', 'book-details');
+  bookDetails.innerText = `"${book.title}" by ${book.author}`;
   const removeBtn = document.createElement('button');
   removeBtn.setAttribute('class', 'removeBtn');
-  removeBtn.setAttribute('id', item.id);
+  removeBtn.setAttribute('id', book.id);
   removeBtn.innerText = 'Remove';
-  newbookContainer.append(bookTitle, bookAuthor, removeBtn);
-  bookContainer.appendChild(newbookContainer);
-  removeBook();
+
+  newBookContainer.append(bookDetails, removeBtn);
+  bookContainer.appendChild(newBookContainer);
+  const removeBtns = document.querySelectorAll('.removeBtn');
+  removeBtns.forEach((elem) => {
+    elem.addEventListener('click', (event) => {
+      const bookObject = new Books();
+      bookObject.remove(event);
+    });
+  });
 }
 
-const booksList = () => {
-  if (getBooks !== null) {
-    getBooks.forEach((ele) => {
-      createNewBook(ele);
+const displayBooks = () => {
+  Books.getBooksList();
+  if (Books.bookList) {
+    Books.bookList.forEach((book) => {
+      createNewBook(book);
     });
   }
 };
 
-booksList();
-
-function removeBook() {
-  let getBooks = JSON.parse(localStorage.getItem('books'));
-  const removeBtn = document.querySelectorAll('.removeBtn');
-  removeBtn.forEach((element) => {
-    element.addEventListener('click', (e) => {
-      const id = parseInt(e.target.id, 10);
-      getBooks = getBooks.filter((item) => item.id !== id);
-      localStorage.setItem('books', JSON.stringify(getBooks));
-      location.reload();
-    });
-  });
-}
+displayBooks();
