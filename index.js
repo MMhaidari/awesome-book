@@ -101,3 +101,22 @@ const contactInfo = document.querySelector('.contact');
 const listLinkBtn = document.querySelector('.list--link');
 const addNewLinkBtn = document.querySelector('.add-new--link');
 const contactLinkBtn = document.querySelector('.contact--link');
+
+listLinkBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  addNewBook.classList.add('hidden');
+  contactInfo.classList.add('hidden');
+  listOfBooks.classList.remove('hidden');
+});
+addNewLinkBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  contactInfo.classList.add('hidden');
+  listOfBooks.classList.add('hidden');
+  addNewBook.classList.remove('hidden');
+});
+contactLinkBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  addNewBook.classList.add('hidden');
+  listOfBooks.classList.add('hidden');
+  contactInfo.classList.remove('hidden');
+});
