@@ -108,12 +108,14 @@ listLinkBtn.addEventListener('click', (e) => {
   contactInfo.classList.add('hidden');
   listOfBooks.classList.remove('hidden');
 });
+
 addNewLinkBtn.addEventListener('click', (e) => {
   e.preventDefault();
   contactInfo.classList.add('hidden');
   listOfBooks.classList.add('hidden');
   addNewBook.classList.remove('hidden');
 });
+
 contactLinkBtn.addEventListener('click', (e) => {
   e.preventDefault();
   addNewBook.classList.add('hidden');
