@@ -19,13 +19,43 @@ body {
 
 .container {
   margin: 0 auto;
+  max-width: 144rem;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.9rem;
+  margin: 3.2rem;
+  padding: 1.8rem;
+  border: 0.4rem solid black;
+}
+
+.navigation--links {
+  display: flex;
+  gap: 3.2rem;
+}
+
+.navigation--links li {
+  list-style: none;
+}
+
+.navigation--links li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 700;
+  font-size: 2.2rem;
+}
+
+.lines {
+  border: 0.25rem solid #000;
 }
 
 .primary-header {
   text-align: center;
-  margin-bottom: 3.2rem;
+  margin-bottom: 5rem;
   margin-top: 1.2rem;
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 900;
 }
 
@@ -93,8 +123,92 @@ body {
   box-shadow: none;
 }
 
-@media screen and (min-width: 850px) {
+.hidden {
+  display: none;
+}
+
+.contact {
+  max-width: 85rem;
+  margin: 0 auto;
+}
+
+.contact--description {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 5rem;
+}
+
+.contact--info {
+  font-size: 1.9rem;
+  margin-left: 2.8rem;
+  font-weight: 700;
+}
+
+.footer {
+  display: flex;
+  position: absolute;
+  width: 95%;
+  top: 88%;
+  margin: 3.2rem;
+  border: 0.3rem solid #000;
+  padding: 1.2rem;
+  font-size: 1.8rem;
+}
+
+@media (min-width: 850px) {
   .book-container {
     width: 76rem;
+  }
+}
+
+@media (max-width: 850px) {
+  .contact {
+    width: 80vw;
+    margin: 0 auto;
+  }
+
+  .primary-header {
+    font-size: 3rem;
+  }
+
+  .contact--description {
+    font-size: 1.8rem;
+  }
+
+  .contact--info {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 550px) {
+  html {
+    font-size: 0.6rem;
+  }
+
+  .navigation {
+    font-size: 1.3rem;
+    padding: 1.2rem;
+    margin: 1.2rem;
+  }
+
+  .navigation--links {
+    gap: 1.2rem;
+  }
+
+  .navigation ul a {
+    font-size: 1.4rem;
+  }
+
+  .contact {
+    width: 95vw;
+  }
+
+  .footer {
+    font-size: 1.2rem;
+    width: 90vw;
+    top: 90%;
+    left: 5%;
+    padding: 1.1rem;
+    margin: 0 auto;
   }
 }

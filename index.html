@@ -8,17 +8,44 @@
     <title>Document</title>
 </head>
 <body>
+    <header class="header">
+        <nav class="navigation">
+            <h3 class="navigation-header">Awesome Books</h3>
+            <ul class="navigation--links">
+                <li class="nav__link"><a href="#" class="list--link">List</a></li>
+                <hr class="lines">
+                <li class="nav__link"><a href="#" class="add-new--link">Add new</a></li>
+                <hr class="lines">
+                <li class="nav__link"><a href="#" class="contact--link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="container">
-        <h1 class="primary-header">All Awesome Books</h1>
-        <div class="book-container"></div>
+        <div class="book--list hidden">    
+            <h1 class="primary-header">Add a new book</h1>
+            <div class="book-container"></div>
+        </div>
         
         <form action="#" class="book-form">
-           <h2 class="form-header">Add New Book</h2>
+           <h2 class="primary-header">Add a New Book</h2>
            <input type="text" name="book-title" id="book-title" placeholder="Book Title" >
            <input type="text" name="book-author" id="book-author" placeholder="Book Author">
            <input class="add-book" type="submit" name="add-book" id="add-book" value="Add">
         </form>
+
+        <div class="contact hidden">
+            <h1 class="primary-header"> Contact information</h1>
+            <p class="contact--description">Do have any questions or you just want to say "Hello" <br> you can reach out to us!</p>
+            <ul class="contact--info">
+                <li>Our e-mail: mail@mail.com</li>
+                <li>Our phone number: 0043586534422</li>
+                <li>Our address: Streetname 22,84503, City, Country</li>
+            </ul>
+        </div>
      </div>
+     <footer class="footer">
+        <h2>Copyright@ Microverse 2023</h2>
+     </footer>
     <script defer src="index.js"></script>
 </body>
 </html>
