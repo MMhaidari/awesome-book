@@ -51,7 +51,7 @@
 
 ## 💻 You Find out the profolio website online by clicking to below link
 
-<a>coming soon</a>
+<a href="https://mmhaidari.github.io/awesome-book/">Live link</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
