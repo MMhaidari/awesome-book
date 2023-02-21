@@ -3,6 +3,21 @@ class Books {
   constructor() {
     this.bookList = [];
   }
+  
+  static fetchBooks() {
+    const getBooks = localStorage.getItem('books');
+    return getBooks ? JSON.parse(getBooks) : [];
+  }
+
+  static updateBooks(books) {
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  static getBooksList() {
+    if (Books.fetchBooks()) {
+      this.bookList = Books.fetchBooks();
+    }
+  }
 
   addBook(book) {
     this.bookList = Books.fetchBooks();
