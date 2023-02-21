@@ -1,9 +1,8 @@
-/* eslint-disable no-use-before-define */
 class Books {
   constructor() {
     this.bookList = [];
   }
-  
+
   static fetchBooks() {
     const getBooks = localStorage.getItem('books');
     return getBooks ? JSON.parse(getBooks) : [];
@@ -33,27 +32,6 @@ class Books {
     Books.updateBooks(this.bookList);
   }
 }
-
-const addbookBtn = document.getElementById('add-book');
-
-addbookBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  const bookTitle = document.querySelector('#book-title').value;
-  const bookAuthor = document.querySelector('#book-author').value;
-  Books.bookList = Books.fetchBooks() ? Books.fetchBooks() : [];
-  let id = 0;
-  if (Books.bookList && Books.bookList.length > 0) {
-    id = Books.bookList[Books.bookList.length - 1].id + 1;
-  }
-
-  if (bookTitle && bookAuthor) {
-    const book = { id: id += 1, title: bookTitle, author: bookAuthor };
-    const bookObject = new Books();
-    bookObject.addBook(book);
-    createNewBook(book);
-    clearValue();
-  }
-});
 
 const clearValue = () => {
   const bookTitle = document.querySelector('#book-title');
@@ -85,6 +63,27 @@ function createNewBook(book) {
     });
   });
 }
+
+const addbookBtn = document.getElementById('add-book');
+
+addbookBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  const bookTitle = document.querySelector('#book-title').value;
+  const bookAuthor = document.querySelector('#book-author').value;
+  Books.bookList = Books.fetchBooks() ? Books.fetchBooks() : [];
+  let id = 0;
+  if (Books.bookList && Books.bookList.length > 0) {
+    id = Books.bookList[Books.bookList.length - 1].id + 1;
+  }
+
+  if (bookTitle && bookAuthor) {
+    const book = { id: id += 1, title: bookTitle, author: bookAuthor };
+    const bookObject = new Books();
+    bookObject.addBook(book);
+    createNewBook(book);
+    clearValue();
+  }
+});
 
 const displayBooks = () => {
   Books.getBooksList();
