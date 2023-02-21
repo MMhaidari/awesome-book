@@ -75,7 +75,6 @@ addbookBtn.addEventListener('click', (e) => {
   if (Books.bookList && Books.bookList.length > 0) {
     id = Books.bookList[Books.bookList.length - 1].id + 1;
   }
-
   if (bookTitle && bookAuthor) {
     const book = { id: id += 1, title: bookTitle, author: bookAuthor };
     const bookObject = new Books();
@@ -95,3 +94,10 @@ const displayBooks = () => {
 };
 
 displayBooks();
+
+const listOfBooks = document.querySelector('.book--list');
+const addNewBook = document.querySelector('.book-form');
+const contactInfo = document.querySelector('.contact');
+const listLinkBtn = document.querySelector('.list--link');
+const addNewLinkBtn = document.querySelector('.add-new--link');
+const contactLinkBtn = document.querySelector('.contact--link');
